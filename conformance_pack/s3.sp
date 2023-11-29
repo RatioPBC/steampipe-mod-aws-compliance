@@ -526,7 +526,9 @@ query "s3_bucket_object_lock_enabled" {
       ${local.tag_dimensions_sql}
       ${local.common_dimensions_sql}
     from
-      aws_s3_bucket;
+      aws_s3_bucket
+    where
+      aws_s3_bucket.name not like '%_tfstate%';
   EOQ
 }
 
