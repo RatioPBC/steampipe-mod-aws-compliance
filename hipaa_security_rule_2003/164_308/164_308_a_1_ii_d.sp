@@ -12,7 +12,7 @@ benchmark "hipaa_security_rule_2003_164_308_a_1_ii_d" {
     control.cloudtrail_trail_validation_enabled,
     control.codebuild_project_logging_enabled,
     control.elb_application_classic_lb_logging_enabled,
-    control.guardduty_enabled,
+    # control.guardduty_enabled,
     control.rds_db_instance_logging_enabled,
     control.redshift_cluster_encryption_logging_enabled,
     control.s3_bucket_logging_enabled,
