@@ -428,7 +428,9 @@ query "s3_bucket_cross_region_replication_enabled" {
       ${replace(local.common_dimensions_qualifier_sql, "__QUALIFIER__", "b.")}
     from
       aws_s3_bucket b
-      left join bucket_with_replication r on b.name = r.name;
+      left join bucket_with_replication r on b.name = r.name
+    where
+      b.name not like '%_tfstate_replica';
   EOQ
 }
 
