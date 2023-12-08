@@ -430,7 +430,9 @@ query "s3_bucket_cross_region_replication_enabled" {
       aws_s3_bucket b
       left join bucket_with_replication r on b.name = r.name
     where
-      b.name not like '%_tfstate_replica';
+      b.name not like '%_tfstate_replica'
+      and b.name not like '%_logs'
+      and b.name not like '%_cloudtrail';
   EOQ
 }
 
@@ -507,7 +509,11 @@ query "s3_bucket_logging_enabled" {
       ${local.tag_dimensions_sql}
       ${local.common_dimensions_sql}
     from
-      aws_s3_bucket;
+      aws_s3_bucket
+    where
+      aws_s3_bucket.name not like '%_tfstate_replica'
+      and aws_s3_bucket.name not like '%_logs'
+      and aws_s3_bucket.name not like '%_cloudtrail';
   EOQ
 }
 
@@ -528,7 +534,9 @@ query "s3_bucket_object_lock_enabled" {
     from
       aws_s3_bucket
     where
-      aws_s3_bucket.name not like '%_tfstate%';
+      aws_s3_bucket.name not like '%_tfstate%'
+      and aws_s3_bucket.name not like '%_logs'
+      and aws_s3_bucket.name not like '%_cloudtrail';
   EOQ
 }
 
@@ -671,7 +679,10 @@ query "s3_bucket_versioning_enabled" {
       ${local.tag_dimensions_sql}
       ${local.common_dimensions_sql}
     from
-      aws_s3_bucket;
+      aws_s3_bucket
+    where
+      aws_s3_bucket.name not like '%_logs'
+      and aws_s3_bucket.name not like '%_cloudtrail';
   EOQ
 }
 
