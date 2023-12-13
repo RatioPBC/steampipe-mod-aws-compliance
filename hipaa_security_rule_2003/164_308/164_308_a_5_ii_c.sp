@@ -5,7 +5,7 @@ benchmark "hipaa_security_rule_2003_164_308_a_5_ii_c" {
     control.cloudtrail_trail_enabled,
     control.cloudtrail_trail_integrated_with_logs,
     control.cloudtrail_trail_validation_enabled,
-    control.guardduty_enabled,
+    # control.guardduty_enabled,
     control.log_metric_filter_console_authentication_failure
   ]
 
