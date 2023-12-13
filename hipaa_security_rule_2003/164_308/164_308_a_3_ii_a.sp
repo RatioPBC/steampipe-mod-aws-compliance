@@ -7,7 +7,7 @@ benchmark "hipaa_security_rule_2003_164_308_a_3_ii_a" {
     control.cloudtrail_trail_enabled,
     control.elb_application_classic_lb_logging_enabled,
     control.emr_cluster_kerberos_enabled,
-    control.guardduty_enabled,
+    # control.guardduty_enabled,
     control.iam_root_user_hardware_mfa_enabled,
     control.iam_root_user_mfa_enabled,
     control.iam_user_console_access_mfa_enabled,
@@ -16,7 +16,7 @@ benchmark "hipaa_security_rule_2003_164_308_a_3_ii_a" {
     control.rds_db_instance_iam_authentication_enabled,
     control.redshift_cluster_encryption_logging_enabled,
     control.s3_bucket_logging_enabled,
-    control.securityhub_enabled
+    # control.securityhub_enabled
   ]
 
   tags = merge(local.hipaa_security_rule_2003_164_308_common_tags, {
