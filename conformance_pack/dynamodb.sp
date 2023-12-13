@@ -254,7 +254,9 @@ query "dynamodb_table_in_backup_plan" {
       ${replace(local.common_dimensions_qualifier_sql, "__QUALIFIER__", "t.")}
     from
       aws_dynamodb_table as t
-      left join backed_up_table as b on t.name = b.name;
+      left join backed_up_table as b on t.name = b.name
+    where
+      t.name not like '%-tfstate-lock';
   EOQ
 }
 
@@ -304,7 +306,9 @@ query "dynamodb_table_protected_by_backup_plan" {
       ${replace(local.common_dimensions_qualifier_sql, "__QUALIFIER__", "t.")}
     from
       aws_dynamodb_table as t
-      left join backup_protected_table as b on t.arn = b.arn;
+      left join backup_protected_table as b on t.arn = b.arn
+    where
+      t.name not like '%-tfstate-lock';
   EOQ
 }
 
