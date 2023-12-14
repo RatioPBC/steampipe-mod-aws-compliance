@@ -9,7 +9,7 @@ benchmark "hipaa_security_rule_2003_164_312_b" {
     control.cloudtrail_trail_validation_enabled,
     control.cloudwatch_log_group_retention_period_365,
     control.elb_application_classic_lb_logging_enabled,
-    control.guardduty_enabled,
+    # control.guardduty_enabled,
     control.rds_db_instance_logging_enabled,
     control.vpc_flow_logs_enabled,
     control.waf_web_acl_logging_enabled,
