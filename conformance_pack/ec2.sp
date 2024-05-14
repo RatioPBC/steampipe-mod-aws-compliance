@@ -568,7 +568,8 @@ query "ec2_instance_not_publicly_accessible" {
       ${local.tag_dimensions_sql}
       ${local.common_dimensions_sql}
     from
-      aws_ec2_instance;
+      aws_ec2_instance
+    where aws_ec2_instance.name != 'tailscale-exit-node';
   EOQ
 }
 
