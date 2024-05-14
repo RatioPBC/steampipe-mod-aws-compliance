@@ -110,7 +110,9 @@ query "secretsmanager_secret_automatic_rotation_enabled" {
       ${local.tag_dimensions_sql}
       ${local.common_dimensions_sql}
     from
-      aws_secretsmanager_secret;
+      aws_secretsmanager_secret
+    where
+      aws_secretsmanager_secret.name not like '%_ts_auth_key';
   EOQ
 }
 
@@ -141,7 +143,9 @@ query "secretsmanager_secret_rotated_as_scheduled" {
       ${local.tag_dimensions_sql}
       ${local.common_dimensions_sql}
     from
-      aws_secretsmanager_secret;
+      aws_secretsmanager_secret
+    where
+      aws_secretsmanager_secret.name not like '%_ts_auth_key';
   EOQ
 }
 
