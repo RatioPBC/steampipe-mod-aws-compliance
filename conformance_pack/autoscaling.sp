@@ -147,7 +147,9 @@ query "autoscaling_group_with_lb_use_health_check" {
       ${local.tag_dimensions_sql}
       ${local.common_dimensions_sql}
     from
-      aws_ec2_autoscaling_group;
+      aws_ec2_autoscaling_group
+    where
+      aws_ec2_autoscaling_group.name != 'tailscale-exit-node';
   EOQ
 }
 
