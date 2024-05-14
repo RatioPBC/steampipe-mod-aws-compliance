@@ -620,6 +620,7 @@ query "vpc_security_group_restrict_ingress_tcp_udp_all" {
             and from_port is null
           )
         )
+        and not (ip_protocol = 'udp' and port_range = '41641')
       group by
         group_id
     )
